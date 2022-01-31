@@ -1,0 +1,54 @@
+html, body, #__next {
+  height: 100%;
+  overflow: hidden;
+}
+
+.imgDiv {
+  height: calc(100vh - 4px);
+  width: calc(100vh - 4px);
+  padding: 2px;
+}
+
+.imgDivAnim {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  animation: rotation 2s infinite linear;
+  animation-play-state: paused;
+}
+
+.imgDivAnim.running {
+  animation-play-state: running;
+}
+
+.imgDivAnim.stopping {
+  animation-timing-function: ease-out;
+}
+
+
+.imgDivInner {
+  z-index: 3;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.imgDivInner.album {
+  z-index: 0;
+  height: 40vh;
+  width: 40vh;
+
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(359deg);
+  }
+}
