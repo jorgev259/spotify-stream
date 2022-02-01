@@ -12,5 +12,5 @@ if (accessCode) spotifyApi.setAccessToken(accessCode)
 export default spotifyApi
 export async function getCurrentSong () {
   const data = await spotifyApi.getMyCurrentPlayingTrack()
-  return (data.body)
+  return data.body
 }
