@@ -2,11 +2,12 @@ import { useEffect, useState/*, useRef */ } from 'react'
 // import Image from 'next/image'
 import classNames from 'classnames'
 
-import { getCurrentSong } from '../spotifyApi'
+import { code, getCurrentSong } from '../spotifyApi'
 
 const padNumber = num => num < 10 ? `0${num}` : num
 
 export async function getServerSideProps (context) {
+  if (!code) return { redirect: { destination: '/api/login', permanent: false } }
   try {
     const song = await getCurrentSong()
     return { props: { song } }
