@@ -1,13 +1,12 @@
-import { useEffect, useState/*, useRef */ } from 'react'
+import { useEffect, useState } from 'react'
 // import Image from 'next/image'
 import classNames from 'classnames'
 
-import { code, getCurrentSong } from '../spotifyApi'
+import { getCurrentSong } from '../spotifyApi'
 
 const padNumber = num => num < 10 ? `0${num}` : num
 
 export async function getServerSideProps (context) {
-  if (!code) return { redirect: { destination: '/api/login', permanent: false } }
   try {
     const song = await getCurrentSong()
     return { props: { song } }
@@ -24,6 +23,11 @@ export default function Index (props) {
   useEffect(() => {
     setInterval(async () => {
       const res = await fetch('/api/song')
+      if (!res.ok) {
+        console.log(res.statusText)
+        if (res.status === 401) location.replace('/api/login')
+      }
+
       let data = await res.json()
 
       if (data.currently_playing_type === 'ad') {
