@@ -18,3 +18,6 @@ Stream Widget for OBS/Streamlabs that displays your currently playing song. Runs
 - Authorize the application to Spotify
 - Add a `Browser Source` on a OBS/Streamlabs scene with the url `http://localhost:3000`
 - Replace `localhost` with an IP address if the widget is being ran on a separate computer than OBS/Streamlabs
+
+https://user-images.githubusercontent.com/19596334/152210245-f8867867-1100-43c9-b894-cd61727a8c01.mp4
+
